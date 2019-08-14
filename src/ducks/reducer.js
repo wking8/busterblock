@@ -7,6 +7,7 @@ const initialState = {
 
 // Action Constants
 const SET_USER = 'SET_USER'
+const LOGOUT = 'LOGOUT'
 
 
 
@@ -15,6 +16,11 @@ export function setUser(user) {
     return {
         type: SET_USER,
         payload: user
+    }
+}
+export function logout() {
+    return {
+        type: LOGOUT
     }
 }
 
@@ -27,6 +33,8 @@ export default (state = initialState, action) => {
         case SET_USER:
             const { username, email } = payload
             return { ...state, username, email }
+        case LOGOUT:
+            return initialState
         default: return state
     }
 }

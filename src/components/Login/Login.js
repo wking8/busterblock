@@ -21,7 +21,6 @@ class Login extends Component {
             emailInput: email,
             passwordInput: password
         } = this.state
-
         axios.post('/auth/register', { username, email, password })
             .then(res => {
                 this.props.setUser({ username, email })
@@ -29,6 +28,21 @@ class Login extends Component {
             })
             .catch(err => {
                 alert('Email already in use.')
+            })
+    }
+    login = () => {
+        const {
+            emailInput: email,
+            passwordInput: password
+        } = this.state
+        axios.post(`/auth/login`, { email, password })
+            .then(res => {
+                const { username, email } = res.data.user
+                this.props.setUser({ username, email })
+                this.props.history.push(`/allmovies`)
+            })
+            .catch(err => {
+                alert('Please try again.')
             })
     }
     render() {
@@ -42,15 +56,15 @@ class Login extends Component {
                     />
                     <input
                         onChange={e => this.handleChange(e)}
-                        name='passwordInput' type="text"
-                        placeholder='PASSWORD'
-                    />
-                    <input
-                        onChange={e => this.handleChange(e)}
                         name='emailInput' type="text"
                         placeholder='EMAIL'
                     />
-                    <button>LOGIN</button>
+                    <input
+                        onChange={e => this.handleChange(e)}
+                        name='passwordInput' type="text"
+                        placeholder='PASSWORD'
+                    />
+                    <button onClick={this.login}>LOGIN</button>
                     <button onClick={this.register}>REGISTER</button>
                 </div>
             </div>

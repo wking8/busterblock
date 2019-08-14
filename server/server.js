@@ -20,6 +20,8 @@ app.use(session({
 
 // Endpoints
 app.post('/auth/register', ctrl.register)
+app.post('/auth/login', ctrl.login)
+app.delete('/auth/logout', ctrl.logout)
 
 // Listener and DB hook up
 massive(CONNECTION_STRING)
