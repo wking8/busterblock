@@ -6,6 +6,7 @@ export default class AllMovies extends Component {
     render() {
         return (
             <div>
+                <button>LOGOUT</button>
                 <MovieCard />
                 <Header />
             </div>

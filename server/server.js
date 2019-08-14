@@ -9,10 +9,17 @@ const app = express()
 
 app.use(express.json())
 // Session
-
+app.use(session({
+    secret: SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        maxAge: 1000 * 60 * 60 * 24 * 10
+    }
+}))
 
 // Endpoints
-
+app.post('/auth/register', ctrl.register)
 
 // Listener and DB hook up
 massive(CONNECTION_STRING)
