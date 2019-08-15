@@ -49,23 +49,32 @@ class Login extends Component {
         return (
             <div className='container'>
                 <div className='login-inputs'>
-                    <input
-                        onChange={e => this.handleChange(e)}
-                        name='usernameInput' type="text"
-                        placeholder='USERNAME'
-                    />
-                    <input
-                        onChange={e => this.handleChange(e)}
-                        name='emailInput' type="text"
-                        placeholder='EMAIL'
-                    />
-                    <input
-                        onChange={e => this.handleChange(e)}
-                        name='passwordInput' type="text"
-                        placeholder='PASSWORD'
-                    />
-                    <button onClick={this.login}>LOGIN</button>
-                    <button onClick={this.register}>REGISTER</button>
+                    <div className='username'>
+                        <input
+                            onChange={e => this.handleChange(e)}
+                            name='usernameInput' type="text"
+                            placeholder='USERNAME'
+                        />
+                    </div>
+                    <div className='email'>
+                        <input
+                            onChange={e => this.handleChange(e)}
+                            name='emailInput' type="text"
+                            placeholder='EMAIL'
+                        />
+                    </div>
+                    <div className='password'>
+                        <input
+                            onChange={e => this.handleChange(e)}
+                            name='passwordInput' type="text"
+                            placeholder='PASSWORD'
+                        />
+                    </div>
+                    <div className='login-container'>
+                        <button className='login-btns' onClick={this.login}>LOGIN</button>
+                        <div class="divider" />
+                        <button className='login-btns' onClick={this.register}>REGISTER</button>
+                    </div>
                 </div>
             </div>
         )

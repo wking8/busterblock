@@ -1,0 +1,31 @@
+.header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 100px;
+    padding-bottom: 35px;
+}   
+.divider{
+    width: 15px;
+    height: auto;
+    display: inline-block;
+}
+.app-title {
+    font-size: 60px;
+    color: #F8A403;
+    text-shadow: 
+    2px 0 0 #0E3DA4, 
+    0 -1px 0 #0E3DA4, 
+    0 1px 0 #0E3DA4, 
+    -1px 0 0 #0E3DA4;
+}
+.account-btn, .logout {
+    color: #0E3DA4;
+    background: #F8A403;
+    height: 30px;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 15px;
+    border: 1px solid #0E3DA4;
+}

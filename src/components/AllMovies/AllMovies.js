@@ -1,31 +1,25 @@
 import React, { Component } from 'react'
 import MovieCard from '../MovieCard/MovieCard'
 import Header from '../Header/Header'
-import axios from 'axios'
-import { logout } from '../../ducks/reducer'
-import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
+import './AllMovies.css'
 
-class AllMovies extends Component {
-    logout = () => {
-        axios.delete('/auth/logout')
-            .then(() => {
-                this.props.logout()
-                this.props.history.push(`/`)
-            })
-    }
+export default class AllMovies extends Component {
     render() {
         return (
-            <div>
+            <div className='all-movies'>
                 <Header />
-                <button onClick={this.logout}>LOGOUT</button>
-                <MovieCard />
+                <div className='movie-container'>
+                    <MovieCard />
+                    <MovieCard />
+                    <MovieCard />
+                    <MovieCard />
+                    <MovieCard />
+                    <MovieCard />
+                    <MovieCard />
+                    <MovieCard />
+                </div>
+
             </div>
         )
     }
 }
-
-export default connect(
-    null,
-    { logout }
-)(withRouter(AllMovies))
