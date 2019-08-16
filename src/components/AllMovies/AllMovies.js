@@ -8,6 +8,7 @@ export default class AllMovies extends Component {
         return (
             <div className='all-movies'>
                 <Header />
+                <hr class='border'></hr>
                 <div className='movie-container'>
                     <MovieCard />
                     <MovieCard />
@@ -17,8 +18,10 @@ export default class AllMovies extends Component {
                     <MovieCard />
                     <MovieCard />
                     <MovieCard />
+                    <MovieCard />
+                    <MovieCard />
                 </div>
-
+                <hr class='border'></hr>
             </div>
         )
     }

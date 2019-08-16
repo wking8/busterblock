@@ -2,9 +2,9 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 100%;
+    width: 100vw;
     height: 100px;
-    padding-bottom: 35px;
+    padding-bottom: 20px;
 }   
 .divider{
     width: 15px;
@@ -15,9 +15,9 @@
     font-size: 60px;
     color: #F8A403;
     text-shadow: 
-    2px 0 0 #0E3DA4, 
-    0 -1px 0 #0E3DA4, 
-    0 1px 0 #0E3DA4, 
+    2px 1px 1px #0E3DA4, 
+    0 -1px 1px #0E3DA4, 
+    0 2px 1px #0E3DA4, 
     -1px 0 0 #0E3DA4;
 }
 .account-btn, .logout {
@@ -26,6 +26,20 @@
     height: 30px;
     cursor: pointer;
     border-radius: 8px;
-    font-size: 15px;
+    font-size: 12px;
     border: 1px solid #0E3DA4;
+}
+.account {
+    display: flex;
+    justify-content: space-around;
+    /* align-items: center; */
+    width: 30%;
+}
+.account input {
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 1px solid gray;
+    cursor: pointer;
+    font-size: 15px;
 }

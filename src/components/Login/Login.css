@@ -31,12 +31,12 @@
         justify-content: space-around;
         width: 40%;
     }
-    .divider{
+    .divider {
         width: 75px;
         height: auto;
         display: inline-block;
     }
-    input {
+    .login-inputs input {
         font-size: 15px;
         border: 0;
         outline: 0;
