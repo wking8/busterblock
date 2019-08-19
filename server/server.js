@@ -22,6 +22,10 @@ app.use(session({
 app.post('/auth/register', ctrl.register)
 app.post('/auth/login', ctrl.login)
 app.delete('/auth/logout', ctrl.logout)
+app.get('/admin/users', ctrl.getUsers)
+app.put('/admin/editUsername', ctrl.editUsername)
+app.post('/admin/searchMovie', ctrl.searchMovie)
+app.post('/admin/addMovie', ctrl.addMovie)
 
 // Listener and DB hook up
 massive(CONNECTION_STRING)

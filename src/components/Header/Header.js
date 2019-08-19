@@ -9,6 +9,19 @@ class Header extends Component {
     state = {
         search: ''
     }
+    componentDidMount() {
+        const el = document.querySelector('nav');
+        this.setState({ top: el.offsetTop, height: el.offsetHeight });
+        window.addEventListener('scroll', this.handleScroll);
+    }
+    componentDidUpdate() {
+        this.state.scroll > this.state.top ?
+            document.body.style.paddingTop = `${this.state.height}px` :
+            document.body.style.paddingTop = 0;
+    }
+    handleScroll = () => {
+        this.setState({ scroll: window.scrollY });
+    }
     logout = () => {
         axios.delete('/auth/logout')
             .then(() => {
@@ -24,25 +37,27 @@ class Header extends Component {
     }
     render() {
         return (
-            <div className='header'>
-                <h1 className='app-title'>BusterBlock</h1>
-                <div className='account'>
-                    <button className='account-btn'>ACCOUNT</button>
-                    {/* <div class="divider" /> */}
-                    <button
-                        className='logout'
-                        onClick={this.logout}>
-                        LOGOUT
+            <nav className={this.state.scroll > this.state.top ? "fixed-nav" : ""}>
+                <div className='header'>
+                    <h1 className='app-title'>BusterBlock</h1>
+                    <div className='account'>
+                        <button className='account-btn'>ACCOUNT</button>
+                        {/* <div class="divider" /> */}
+                        <button
+                            className='logout'
+                            onClick={this.logout}>
+                            LOGOUT
                     </button>
-                    {/* <div class="divider" /> */}
-                    <input
-                        onClick={e => this.handleChange(e)}
-                        name='search'
-                        type="text"
-                        placeholder='Search'
-                    />
+                        {/* <div class="divider" /> */}
+                        <input
+                            onChange={e => this.handleChange(e)}
+                            name='search'
+                            type="text"
+                            placeholder='Search'
+                        />
+                    </div>
                 </div>
-            </div>
+            </nav>
         )
     }
 }

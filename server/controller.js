@@ -1,4 +1,7 @@
 const bcrypt = require('bcryptjs')
+const axios = require('axios')
+
+// movies = []
 
 module.exports = {
     register: async (req, res) => {
@@ -42,6 +45,36 @@ module.exports = {
     logout: (req, res) => {
         req.session.destroy()
         res.status(200).send({ message: 'Logged out', loggedIn: false })
+    },
+    getUsers: async (req, res) => {
+        const db = req.app.get('db')
+        const users = await db.get_all_users()
+        return res.status(200).send(users)
+    },
+    editUsername: async (req, res) => {
+        const db = req.app.get('db')
+        const { username, newUser } = req.body
+        try {
+            await db.update_username({ username, newUser })
+            res.status(202).end()
+        }
+        catch (err) {
+            // console.log('\n\n\n', err, '\n\n\n')
+            res.status(500).end()
+        }
+    },
+    searchMovie: async (req, res) => {
+        const { searchTerm } = req.body
+        const { data } = await axios.get(`http://www.omdbapi.com/?apikey=${process.env.REACT_APP_APIKEY}&s=${searchTerm}`)
+        res.status(200).send(data)
+    },
+    addMovie: async (req, res) => {
+        const { imdbID } = req.body
+        const { data } = await axios.get(`http://www.omdbapi.com/?apikey=${process.env.REACT_APP_APIKEY}&i=${imdbID}`)
+        const { Title, Director, Actors, Year, Poster } = data
+        const db = req.app.get('db')
+        await db.add_movie({ Title, Director, Actors, Poster, Year, imdbID })
+        res.status(200).send({ title: Title })
     }
 }
 

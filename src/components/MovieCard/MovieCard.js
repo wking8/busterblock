@@ -9,7 +9,7 @@ export default class MovieCard extends Component {
         movieData: []
     }
     componentDidMount() {
-        axios.get(`http://www.omdbapi.com/?apikey=${process.env.REACT_APP_APIKEY}&i=tt3896198`)
+        axios.get(`http://www.omdbapi.com/?apikey=${process.env.REACT_APP_APIKEY}&i=tt1276104`)
             .then(res => {
                 console.log(res)
                 this.setState({ movieData: [res.data] })
@@ -18,14 +18,15 @@ export default class MovieCard extends Component {
     render() {
         console.log(this.state)
         const mappedMovies = this.state.movieData.map(element => {
-            return <div>
-                <img src={element.Poster} alt=""/>
-                </div>
+            return <div id='movie-img'>
+                <img src={element.Poster} alt="" />
+            </div>
         })
         return (
             <div className='movie-card grow'>
                 <Rental />
                 {mappedMovies}
+
             </div>
         )
     }
