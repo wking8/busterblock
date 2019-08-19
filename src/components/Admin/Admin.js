@@ -10,7 +10,8 @@ export default class Admin extends Component {
         modalOpen: false,
         activeUser: '',
         newUser: '',
-        searchResults: []
+        searchResults: [],
+        // deletedUser: ''
     }
     componentDidMount() {
         this.handleGetUsers()
@@ -21,6 +22,9 @@ export default class Admin extends Component {
             activeUser: username
         });
     }
+    // deleteUser = (username) => {
+
+    // }
     handleOk = e => {
         this.setState({
             modalOpen: false,
@@ -54,7 +58,6 @@ export default class Admin extends Component {
             message: `Successfully added ${data.title}`
         });
     }
-
     buildColumns = () => (
         [
             {
@@ -74,9 +77,9 @@ export default class Admin extends Component {
                 key: 'action',
                 render: (text, record) => (
                     <span>
-                        <a onClick={() => this.editUser(record.username)}>Edit </a>
+                        <button onClick={() => this.editUser(record.username)}>Edit </button>
                         <Divider type="vertical" />
-                        <a>Delete</a>
+                        <button onClick={() => this.deleteUser()}>Delete</button>
                     </span>
                 ),
             },
@@ -113,7 +116,40 @@ export default class Admin extends Component {
                 key: 'action',
                 render: (text, record) => (
                     <span>
-                        <a onClick={() => this.handleAddTitle(record.imdbID)}>Add </a>
+                        <button onClick={() => this.handleAddTitle(record.imdbID)}>Add</button>
+                    </span>
+                ),
+            },
+        ]
+    )
+    buildRentalColumns = () => (
+        [
+            {
+                title: 'Name',
+                dataIndex: 'Name',
+                key: 'Name',
+                render: text => <a>{text}</a>,
+            },
+            {
+                title: 'Number',
+                dataIndex: 'Number',
+                key: 'Number',
+                render: text => <a>{text}</a>,
+            },
+            {
+                title: 'Movie',
+                dataIndex: 'Movie',
+                key: 'Movie',
+                render: text => <a>{text}</a>,
+            },
+            {
+                title: 'Action',
+                key: 'action',
+                render: (text, record) => (
+                    <span>
+                        <button>Contact</button>
+                        <Divider type="vertical" />
+                        <button>Delete</button>
                     </span>
                 ),
             },
@@ -142,8 +178,17 @@ export default class Admin extends Component {
                             pagination={false} rowKey={'Fix'}
                         />
                     </TabPane>
-                    <TabPane tab="Tab 3" key="3">
-                        Content of Tab Pane 3
+                    <TabPane tab="Rentals" key="3">
+                        <Search
+                            placeholder="input search text"
+                            onSearch={this.handleSearch}
+                            style={{ width: 200 }}
+                        />
+                        <Table
+                            columns={this.buildRentalColumns()}
+                            dataSource={this.state.data}
+                            pagination={false} rowKey={'Fix'}
+                        />
                     </TabPane>
                 </Tabs>
                 <Modal

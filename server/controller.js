@@ -1,9 +1,8 @@
 const bcrypt = require('bcryptjs')
 const axios = require('axios')
 
-// movies = []
-
 module.exports = {
+    // All authentication controllers
     register: async (req, res) => {
         const db = req.app.get('db')
         const { username, email, password } = req.body
@@ -46,6 +45,7 @@ module.exports = {
         req.session.destroy()
         res.status(200).send({ message: 'Logged out', loggedIn: false })
     },
+    // All User controllers - get all, edit and delete
     getUsers: async (req, res) => {
         const db = req.app.get('db')
         const users = await db.get_all_users()
@@ -59,10 +59,24 @@ module.exports = {
             res.status(202).end()
         }
         catch (err) {
+            res.status(500).end()
+        }
+    },
+    deleteUser: async (req, res) => {
+        const db = req.app.get('db')
+        const { username } = req.body
+        try {
+            await db.delete_user({ username })
+            res.status(200).send(username)
+        }
+        catch (err) {
             // console.log('\n\n\n', err, '\n\n\n')
             res.status(500).end()
         }
     },
+
+
+    // All movie related controllers
     searchMovie: async (req, res) => {
         const { searchTerm } = req.body
         const { data } = await axios.get(`http://www.omdbapi.com/?apikey=${process.env.REACT_APP_APIKEY}&s=${searchTerm}`)
@@ -75,6 +89,23 @@ module.exports = {
         const db = req.app.get('db')
         await db.add_movie({ Title, Director, Actors, Poster, Year, imdbID })
         res.status(200).send({ title: Title })
+    },
+    getAll: async (req, res) => {
+        const db = req.app.get('db')
+        const data = await db.get_all_movies()
+        return res.status(200).send(data)
+    },
+    deleteMovie: async (req, res) => {
+        const db = req.app.get('db')
+        const { imdbID } = req.params
+        try {
+            await db.delete_movie({ imdbID })
+            res.status(200).send( imdbID )
+        }
+        catch (err) {
+            // console.log('\n\n\n', err, '\n\n\n')
+            res.status(500).end()
+        }
     }
 }
 
