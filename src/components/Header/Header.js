@@ -4,6 +4,7 @@ import axios from 'axios'
 import { logout } from '../../ducks/reducer'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
+import { Button } from 'antd';
 
 class Header extends Component {
     state = {
@@ -41,14 +42,16 @@ class Header extends Component {
                 <div className='header'>
                     <h1 className='app-title'>BusterBlock</h1>
                     <div className='account'>
-                        <button className='account-btn'>ACCOUNT</button>
-                        {/* <div class="divider" /> */}
-                        <button
-                            className='logout'
-                            onClick={this.logout}>
-                            LOGOUT
-                    </button>
-                        {/* <div class="divider" /> */}
+                        <Button
+                            className='account'>
+                            Account
+                        </Button>
+                        <Button
+                            onClick={this.logout}
+                            className='logout'>
+                            Logout
+                        </Button>
+                        <div class="divider" />
                         <input
                             onChange={e => this.handleChange(e)}
                             name='search'

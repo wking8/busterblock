@@ -26,7 +26,7 @@ app.get('/admin/users', ctrl.getUsers)
 app.put('/admin/editUsername', ctrl.editUsername)
 app.post('/admin/searchMovie', ctrl.searchMovie)
 app.post('/admin/addMovie', ctrl.addMovie)
-app.delete('/admin/deleteUser', ctrl.deleteUser)
+app.delete('/admin/deleteUser/:username', ctrl.deleteUser)
 app.get('/api/movies', ctrl.getAll)
 app.delete('/api/deleteMovie/:imdbID', ctrl.deleteMovie)
 

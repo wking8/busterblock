@@ -64,18 +64,16 @@ module.exports = {
     },
     deleteUser: async (req, res) => {
         const db = req.app.get('db')
-        const { username } = req.body
+        const { username } = req.params
         try {
-            await db.delete_user({ username })
-            res.status(200).send(username)
+           const data = await db.delete_user({ username })
+            res.status(200).send(data)
         }
         catch (err) {
             // console.log('\n\n\n', err, '\n\n\n')
             res.status(500).end()
         }
     },
-
-
     // All movie related controllers
     searchMovie: async (req, res) => {
         const { searchTerm } = req.body

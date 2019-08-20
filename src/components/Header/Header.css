@@ -3,7 +3,7 @@
     justify-content: space-around;
     align-items: center;
     width: 100vw;
-    height: 100px;
+    height: 120px;
     padding-bottom: 20px;
 }   
 .divider{
@@ -31,7 +31,7 @@
 .account {
     display: flex;
     justify-content: space-around;
-    /* align-items: center; */
+    align-items: center;
     width: 30%;
 }
 .account input {
@@ -41,6 +41,7 @@
     border-bottom: 1px solid gray;
     cursor: pointer;
     font-size: 15px;
+    color: black;
 }
 body {
     margin: 0;
@@ -97,4 +98,18 @@ body {
   
   .content > div {
     margin: 10px 0;
+  }
+  .account .ant-btn {
+    margin-right: 8px;
+    margin-bottom: 8px;
+    background: #F8A403;  
+    color: #0E3DA4;
+  }
+  .account .ant-btn:hover {
+    background: #F8A403;
+    color: #0E3DA4;
+  }
+  .account .ant-btn:focus {
+    background: #F8A403;
+    color: #0E3DA4;
   }

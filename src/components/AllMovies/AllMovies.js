@@ -19,6 +19,7 @@ export default class AllMovies extends Component {
         const mappedMovies = this.state.movieData.map(element => {
             return <MovieCard
                 poster={element.poster}
+                
             />
         })
         return (

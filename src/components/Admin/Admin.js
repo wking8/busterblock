@@ -10,8 +10,7 @@ export default class Admin extends Component {
         modalOpen: false,
         activeUser: '',
         newUser: '',
-        searchResults: [],
-        // deletedUser: ''
+        searchResults: []
     }
     componentDidMount() {
         this.handleGetUsers()
@@ -22,9 +21,10 @@ export default class Admin extends Component {
             activeUser: username
         });
     }
-    // deleteUser = (username) => {
-
-    // }
+    deleteUser = async (username) => {
+        const data = await axios.delete(`/admin/deleteUser/${username}`)
+        this.setState({ data: data.data })
+    }
     handleOk = e => {
         this.setState({
             modalOpen: false,
@@ -79,7 +79,7 @@ export default class Admin extends Component {
                     <span>
                         <button onClick={() => this.editUser(record.username)}>Edit </button>
                         <Divider type="vertical" />
-                        <button onClick={() => this.deleteUser()}>Delete</button>
+                        <button onClick={() => this.deleteUser(record.username)}>Delete</button>
                     </span>
                 ),
             },
@@ -158,7 +158,7 @@ export default class Admin extends Component {
     render() {
         return (
             <div className='admin'>
-                <Tabs defaultActiveKey="2" >
+                <Tabs defaultActiveKey="1" >
                     <TabPane tab="Users" key="1">
                         <Table
                             columns={this.buildColumns()}
