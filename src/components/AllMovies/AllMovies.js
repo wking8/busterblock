@@ -15,11 +15,16 @@ export default class AllMovies extends Component {
                 this.setState({ movieData: res.data })
             })
     }
+    deleteMovie = async (imdbid) => {
+        const data = await axios.delete(`/api/deleteMovie/${imdbid}`)
+        this.setState({ movieData: data.data })
+    }
     render() {
         const mappedMovies = this.state.movieData.map(element => {
             return <MovieCard
                 poster={element.poster}
-                
+                imdbid={element.imdbid}  
+                deleteMovie={this.deleteMovie}
             />
         })
         return (

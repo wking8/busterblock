@@ -97,8 +97,8 @@ module.exports = {
         const db = req.app.get('db')
         const { imdbID } = req.params
         try {
-            await db.delete_movie({ imdbID })
-            res.status(200).send( imdbID )
+            const data = await db.delete_movie({ imdbID })
+            res.status(200).send(data)
         }
         catch (err) {
             // console.log('\n\n\n', err, '\n\n\n')
