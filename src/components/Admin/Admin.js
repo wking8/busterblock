@@ -77,9 +77,17 @@ export default class Admin extends Component {
                 key: 'action',
                 render: (text, record) => (
                     <span>
-                        <button onClick={() => this.editUser(record.username)}>Edit </button>
+                        <button
+                            className='admin-btns'
+                            onClick={() => this.editUser(record.username)}
+                        >Edit
+                        </button>
                         <Divider type="vertical" />
-                        <button onClick={() => this.deleteUser(record.username)}>Delete</button>
+                        <button
+                            className='admin-btns'
+                            onClick={() => this.deleteUser(record.username)}
+                        >Delete
+                        </button>
                     </span>
                 ),
             },

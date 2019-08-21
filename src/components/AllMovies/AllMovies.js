@@ -14,7 +14,10 @@ class AllMovies extends Component {
         let mappedMovies;
         // if there is a search term and a the results array is empty then no results
         if (this.props.searchTerm && this.props.searchResults.length === 0) {
-            mappedMovies = <div className='no-results'>NO RESULTS</div>
+            mappedMovies = <div className='typewriter'><p>
+                <h1>No results... </h1>
+            </p>
+            </div>
         } else {
             // else check if there are any items in the results array
             mappedMovies = this.props.searchResults.length > 0

@@ -114,3 +114,29 @@ body {
     background: #F8A403;
     color: #0E3DA4;
   }
+
+
+  /* Responsive CSS */
+  
+  @media(max-width: 900px) {
+    .header {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      width: 100vw;
+      height: 180px;
+      padding-bottom: 20px;
+    }    
+  }
+  @media(max-width: 800px) {
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      width: 100vw;
+      height: 180px;
+      padding-bottom: 20px;
+    }    
+  }
+  

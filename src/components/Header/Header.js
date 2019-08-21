@@ -44,7 +44,7 @@ class Header extends Component {
                     <h1 className='app-title'>BusterBlock</h1>
                     <div className='account'>
                         <Button
-                            className='account'>
+                            className='account-btn'>
                             Account
                         </Button>
                         <Button
