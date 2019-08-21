@@ -1,13 +1,20 @@
+import axios from 'axios'
+
 // Setting initial Redux state
 const initialState = {
     username: '',
     email: '',
-    profilePic: ''
+    profilePic: '',
+    movieData: [],
+    searchResults: [],
+    searchTerm: ''
 }
 
 // Action Constants
-const SET_USER = 'SET_USER'
-const LOGOUT = 'LOGOUT'
+const SET_USER = 'auth/SET_USER'
+const LOGOUT = 'auth/LOGOUT'
+const GET_ALL_MOVIES = 'movies/GET_ALL_MOVIES'
+const UPDATE_SEARCH_TERM = 'movies/UPDATE_SEARCH_TERM'
 
 
 
@@ -23,6 +30,19 @@ export function logout() {
         type: LOGOUT
     }
 }
+export const getAllMovies = () => async (dispatch) => {
+    const { data } = await axios.get(`api/movies`)
+    dispatch({
+        type: GET_ALL_MOVIES,
+        payload: data
+    })
+}
+export const updateSearchTerm = (searchTerm) => (dispatch) => {
+    dispatch({
+        type: UPDATE_SEARCH_TERM,
+        payload: searchTerm
+    })
+}
 
 
 
@@ -30,6 +50,17 @@ export function logout() {
 export default (state = initialState, action) => {
     const { type, payload } = action
     switch (type) {
+        case UPDATE_SEARCH_TERM:
+            // TODO add check to make sure movieData is not null
+            const results = state.movieData.map(movie => movie.title.toLowerCase().includes(payload.toLowerCase()) ? movie : null);
+            
+            return {
+                ...state,
+                searchTerm: payload,
+                searchResults: [...results].filter(Boolean)
+            }
+        case GET_ALL_MOVIES:
+            return { ...state, movieData: [...payload] }
         case SET_USER:
             const { username, email } = payload
             return { ...state, username, email }

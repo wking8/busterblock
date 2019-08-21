@@ -11,7 +11,8 @@ export default class MovieCard extends Component {
                 <img src={this.props.poster} alt="poster" />
                 <button
                     onClick={() => this.props.deleteMovie(this.props.imdbid)}
-                    className='delete-btn'>Delete
+                    className='delete-btn grow'>
+                    Delete
                 </button>
             </div>
         )

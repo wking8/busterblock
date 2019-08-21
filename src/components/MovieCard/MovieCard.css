@@ -2,20 +2,35 @@
     margin-bottom: 65px; 
     box-shadow: 8px 5px 5px darkgray;
     width: 21%;
-
+    z-index: 998;
   }
+.delete-btn {
+  bottom: 10px;
+  display: none;
+  position: absolute;
+  right: 10px;
+  z-index: 999;
+}
+
+.movie-card:hover .delete-btn {
+  display: block
+}
+
 .grow { 
     transition: all .2s ease-in-out; 
-  }
+ }
+
 .grow:hover { 
     transform: scale(1.1); 
-  } 
-  img {
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-  }
-  #movie-img {
-      width: 100%;
-      height: 100%;
-  }
+}
+
+img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+#movie-img {
+  width: 100%;
+  height: 100%;
+}

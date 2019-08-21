@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import './Header.css'
 import axios from 'axios'
-import { logout } from '../../ducks/reducer'
+import { logout, updateSearchTerm } from '../../ducks/reducer'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { Button } from 'antd';
 
 class Header extends Component {
     state = {
-        search: ''
+    
     }
     componentDidMount() {
         const el = document.querySelector('nav');
@@ -31,10 +31,11 @@ class Header extends Component {
             })
     }
     handleChange = (e) => {
-        console.log(e.target.value)
-        this.setState({
-            [e.target.name]: e.target.value
-        })
+        e.persist()
+        clearTimeout(this.debounce);
+        this.debounce = setTimeout(() => {
+            this.props.updateSearchTerm(e.target.value)
+        }, 250);
     }
     render() {
         return (
@@ -67,5 +68,5 @@ class Header extends Component {
 
 export default connect(
     null,
-    { logout }
+    { logout, updateSearchTerm }
 )(withRouter(Header))

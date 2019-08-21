@@ -4,29 +4,40 @@ import Header from '../Header/Header'
 import './AllMovies.css'
 import Footer from '../Footer/Footer'
 import axios from 'axios'
+import { connect } from 'react-redux'
+import { getAllMovies } from '../../ducks/reducer'
 
-export default class AllMovies extends Component {
-    state = {
-        movieData: []
-    }
+class AllMovies extends Component {
     componentDidMount() {
-        axios.get(`api/movies`)
-            .then(res => {
-                this.setState({ movieData: res.data })
-            })
+        this.props.getAllMovies()
     }
     deleteMovie = async (imdbid) => {
-        const data = await axios.delete(`/api/deleteMovie/${imdbid}`)
-        this.setState({ movieData: data.data })
+        await axios.delete(`/api/deleteMovie/${imdbid}`)
+        this.props.getAllMovies()
     }
     render() {
-        const mappedMovies = this.state.movieData.map(element => {
-            return <MovieCard
-                poster={element.poster}
-                imdbid={element.imdbid}  
-                deleteMovie={this.deleteMovie}
-            />
-        })
+        let mappedMovies;
+        // if there is a search term and a the results array is empty then no results
+        if (this.props.searchTerm && this.props.searchResults.length === 0) {
+            mappedMovies = <div>NO RESULTS</div>
+        } else {
+            // else check if there are any items in the results array
+            mappedMovies = this.props.searchResults.length > 0
+                ? this.props.searchResults.map(element => {
+                    return <MovieCard
+                        poster={element.poster}
+                        imdbid={element.imdbid}
+                        deleteMovie={this.deleteMovie}
+                    />
+                })
+                : this.props.movieData.map(element => {
+                    return <MovieCard
+                        poster={element.poster}
+                        imdbid={element.imdbid}
+                        deleteMovie={this.deleteMovie}
+                    />
+                })
+        }
         return (
             <div className='all-movies'>
                 <Header />
@@ -43,3 +54,10 @@ export default class AllMovies extends Component {
         )
     }
 }
+const mapStateToProps = store => ({
+    movieData: store.movieData,
+    searchResults: store.searchResults,
+    searchTerm: store.searchTerm
+})
+
+export default connect(mapStateToProps, { getAllMovies })(AllMovies)
