@@ -5,15 +5,25 @@
     z-index: 998;
   }
 .delete-btn {
-  bottom: 10px;
+  top: 10px;
   display: none;
   position: absolute;
   right: 10px;
   z-index: 999;
-}
+  cursor: pointer;
+  border-radius: 5px;
+  background: lightgray;
+  color: black;
+  border: 1px solid darkgray; 
 
+}
 .movie-card:hover .delete-btn {
-  display: block
+  display: block;
+}
+.movie-card:hover .delete-btn:hover {
+  display: block;
+  background: rgb(228, 48, 48);
+  color: white;
 }
 
 .grow { 

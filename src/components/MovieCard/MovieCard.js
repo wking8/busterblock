@@ -1,20 +1,25 @@
 import React, { Component } from 'react'
 import Rental from '../Rental/Rental'
 import './MovieCard.css'
+import { connect } from 'react-redux'
+import { deleteMovie } from '../../ducks/reducer'
 
 
-export default class MovieCard extends Component {
+
+class MovieCard extends Component {
     render() {
         return (
             <div className='movie-card grow'>
                 <Rental />
                 <img src={this.props.poster} alt="poster" />
                 <button
-                    onClick={() => this.props.deleteMovie(this.props.imdbid)}
-                    className='delete-btn grow'>
+                    className='delete-btn grow'
+                    onClick={(e) => { if (window.confirm('Are you sure you wish to delete this item?')) this.props.deleteMovie(this.props.imdbid) }}>
                     Delete
                 </button>
             </div>
         )
     }
 }
+
+export default connect(null, { deleteMovie })(MovieCard)

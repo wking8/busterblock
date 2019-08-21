@@ -1,9 +1,9 @@
-import { createStore, compose, applyMiddleware } from 'redux'
-import reducer from './ducks/reducer'
-import thunk from 'redux-thunk'
+import { createStore, compose, applyMiddleware } from 'redux';
+import reducer from './ducks/reducer';
+import thunk from 'redux-thunk';
 
-
-const middleware = [thunk]
+// Middleware to help return my axios calls in the reducer
+const middleware = [thunk];
 
 export default compose(applyMiddleware(...middleware)(createStore))(
     reducer,
