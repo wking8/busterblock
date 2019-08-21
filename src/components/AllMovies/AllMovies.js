@@ -10,10 +10,6 @@ class AllMovies extends Component {
     componentDidMount() {
         this.props.getAllMovies()
     }
-    // deleteMovie = async (imdbid) => {
-    //     await axios.delete(`/api/deleteMovie/${imdbid}`)
-    //     this.props.getAllMovies()
-    // }
     render() {
         let mappedMovies;
         // if there is a search term and a the results array is empty then no results
@@ -53,11 +49,12 @@ class AllMovies extends Component {
         )
     }
 }
+
 // Bringing in my state through props from the reducer
 const mapStateToProps = store => ({
     movieData: store.movieData,
     searchResults: store.searchResults,
     searchTerm: store.searchTerm
 })
-
+// Look into shorthand for brining in all of redux state with 'state => state'
 export default connect(mapStateToProps, { getAllMovies })(AllMovies)
