@@ -1,0 +1,13 @@
+.admin {
+	.add-btn {
+		cursor: pointer;
+		border-radius: 8px;
+		&:hover {
+			background: rgb(54, 209, 54);
+			color: white;
+		}
+	}
+	.admin-btns {
+		cursor: pointer;
+	}
+}

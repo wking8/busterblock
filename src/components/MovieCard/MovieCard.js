@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Rental from '../Rental/Rental'
-import './MovieCard.css'
+import './MovieCard.scss'
 import { connect } from 'react-redux'
 import { deleteMovie } from '../../ducks/reducer'
 
@@ -23,3 +23,4 @@ class MovieCard extends Component {
 }
 
 export default connect(null, { deleteMovie })(MovieCard)
+

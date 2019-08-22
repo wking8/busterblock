@@ -15,7 +15,7 @@ class AllMovies extends Component {
         // if there is a search term and a the results array is empty then no results
         if (this.props.searchTerm && this.props.searchResults.length === 0) {
             mappedMovies = <div className='typewriter'><p>
-                <h1>No results... </h1>
+                <h1>No results...</h1>
             </p>
             </div>
         } else {
@@ -25,6 +25,7 @@ class AllMovies extends Component {
                     return <MovieCard
                         poster={element.poster}
                         imdbid={element.imdbid}
+                        actors={element.actors}
                         deleteMovie={this.deleteMovie}
                     />
                 })
@@ -33,6 +34,7 @@ class AllMovies extends Component {
                     return <MovieCard
                         poster={element.poster}
                         imdbid={element.imdbid}
+                        actors={element.actors}
                         deleteMovie={this.deleteMovie}
                     />
                 })

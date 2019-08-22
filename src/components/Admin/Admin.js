@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import './admin.scss'
 import { Modal, Tabs, Table, Divider, Input, notification } from 'antd';
 const { TabPane } = Tabs;
 const { Search } = Input;
@@ -124,7 +125,11 @@ export default class Admin extends Component {
                 key: 'action',
                 render: (text, record) => (
                     <span>
-                        <button onClick={() => this.handleAddTitle(record.imdbID)}>Add</button>
+                        <button
+                            className='add-btn'
+                            onClick={() => this.handleAddTitle(record.imdbID)}
+                        >Add
+                        </button>
                     </span>
                 ),
             },

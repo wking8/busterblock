@@ -4,9 +4,13 @@ const massive = require('massive')
 const session = require('express-session')
 const {PORT, CONNECTION_STRING, SESSION_SECRET} = process.env
 const ctrl = require('./controller')
+// const http = require("http");
+// const socketIo = require("socket.io");
+// const index = require("./routes/index");
 
 const app = express()
 
+// app.use(index);
 app.use(express.json())
 // Session
 app.use(session({
@@ -17,6 +21,10 @@ app.use(session({
         maxAge: 1000 * 60 * 60 * 24 * 10
     }
 }))
+
+// const server = http.createServer(app);
+// const io = socketIo(server); // < Interesting!
+// const getApiAndEmit = "TODO"
 
 // Endpoints
 app.post('/auth/register', ctrl.register)
