@@ -8,7 +8,7 @@ import { deleteMovie } from '../../ducks/reducer'
 
 class MovieCard extends Component {
     render() {
-        return (
+        return (    
             <div className='movie-card grow'>
                 <Rental />
                 <img src={this.props.poster} alt="poster" />

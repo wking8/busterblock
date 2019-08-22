@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './Header.css'
+import './Header.scss'
 import axios from 'axios'
 import { logout, updateSearchTerm } from '../../ducks/reducer'
 import { connect } from 'react-redux'

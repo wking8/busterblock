@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import MovieCard from '../MovieCard/MovieCard'
 import Header from '../Header/Header'
-import './AllMovies.css'
+import './AllMovies.scss'
 import Footer from '../Footer/Footer'
 import { connect } from 'react-redux'
 import { getAllMovies } from '../../ducks/reducer'

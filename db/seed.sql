@@ -15,3 +15,10 @@ values(${user_id, ${profile_pic}});
 create table rentals(
 api_id integer references user_information(user_id)
 );
+
+create table movie_details(
+ id serial primary key,
+ title varchar(100),
+ poster varchar,
+ imdbID varchar(25)
+ );
