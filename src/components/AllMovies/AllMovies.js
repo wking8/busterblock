@@ -41,6 +41,7 @@ class AllMovies extends Component {
         }
         return (
             <div className='all-movies'>
+                <div id='scroll'></div>
                 <Header />
                 <hr class='hr'></hr>
                 <div className='movie-container'>

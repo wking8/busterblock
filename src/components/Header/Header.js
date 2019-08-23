@@ -5,10 +5,11 @@ import { logout, updateSearchTerm } from '../../ducks/reducer'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { Button } from 'antd';
+import { Link } from 'react-scroll'
 
 class Header extends Component {
     state = {
-    
+
     }
     componentDidMount() {
         const el = document.querySelector('nav');
@@ -41,7 +42,16 @@ class Header extends Component {
         return (
             <nav className={this.state.scroll > this.state.top ? "fixed-nav" : ""}>
                 <div className='header'>
-                    <h1 className='app-title'>BusterBlock</h1>
+                    <Link
+                        activeClass="active"
+                        to="scroll"
+                        spy={true}
+                        smooth={true}
+                        offset={-130}
+                        duration={1000}
+                    >
+                        <h1 id='scroll' className='app-title'>BusterBlock</h1>
+                    </Link>
                     <div className='account'>
                         <Button
                             className='account-btn'>

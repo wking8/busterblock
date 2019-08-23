@@ -11,7 +11,8 @@ export default class Admin extends Component {
         modalOpen: false,
         activeUser: '',
         newUser: '',
-        searchResults: []
+        searchResults: [],
+        renterName: ''
     }
     componentDidMount() {
         this.handleGetUsers()
@@ -20,6 +21,12 @@ export default class Admin extends Component {
         this.setState({
             modalOpen: true,
             activeUser: username
+        });
+    }
+    AddRenter = (name) => {
+        this.setState({
+            modalOpen: true,
+            renterName: name
         });
     }
     deleteUser = async (username) => {
@@ -150,7 +157,7 @@ export default class Admin extends Component {
                 render: text => <a>{text}</a>,
             },
             {
-                title: 'Movie',
+                title: 'Movie(|s)',
                 dataIndex: 'Movie',
                 key: 'Movie',
                 render: text => <a>{text}</a>,
@@ -160,9 +167,17 @@ export default class Admin extends Component {
                 key: 'action',
                 render: (text, record) => (
                     <span>
-                        <button>Contact</button>
+                        <button
+                            className='admin-btns'
+                            onClick={() => this.AddRenter(record.username)}
+                        >Edit
+                        </button>
                         <Divider type="vertical" />
-                        <button>Delete</button>
+                        <button
+                            className='admin-btns'
+                            onClick={() => this.deleteRenter(record.username)}
+                        >Delete
+                        </button>
                     </span>
                 ),
             },
@@ -194,12 +209,12 @@ export default class Admin extends Component {
                     <TabPane tab="Rentals" key="3">
                         <Search
                             placeholder="input search text"
-                            onSearch={this.handleSearch}
+                            onSearch={this.handleChange}
                             style={{ width: 200 }}
                         />
                         <Table
                             columns={this.buildRentalColumns()}
-                            dataSource={this.state.data}
+                            dataSource={this.state.renterName}
                             pagination={false} rowKey={'Fix'}
                         />
                     </TabPane>
