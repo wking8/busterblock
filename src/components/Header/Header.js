@@ -48,7 +48,7 @@ class Header extends Component {
                         spy={true}
                         smooth={true}
                         offset={-130}
-                        duration={1000}
+                        duration={2000}
                     >
                         <h1 id='scroll' className='app-title'>BusterBlock</h1>
                     </Link>

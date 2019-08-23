@@ -168,13 +168,13 @@ export default class Admin extends Component {
                 render: (text, record) => (
                     <span>
                         <button
-                            className='admin-btns'
+                            className='rental-btn'
                             onClick={() => this.AddRenter(record.username)}
                         >Edit
                         </button>
                         <Divider type="vertical" />
                         <button
-                            className='admin-btns'
+                            className='rental-btn'
                             onClick={() => this.deleteRenter(record.username)}
                         >Delete
                         </button>
@@ -217,6 +217,7 @@ export default class Admin extends Component {
                             dataSource={this.state.renterName}
                             pagination={false} rowKey={'Fix'}
                         />
+                        
                     </TabPane>
                 </Tabs>
                 <Modal
