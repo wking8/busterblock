@@ -11,8 +11,8 @@ export default class Admin extends Component {
         modalOpen: false,
         activeUser: '',
         newUser: '',
-        searchResults: [],
-        renterName: ''
+        searchResults: []
+        // renterName: ''
     }
     componentDidMount() {
         this.handleGetUsers()
@@ -23,12 +23,12 @@ export default class Admin extends Component {
             activeUser: username
         });
     }
-    AddRenter = (name) => {
-        this.setState({
-            modalOpen: true,
-            renterName: name
-        });
-    }
+    // AddRenter = (name) => {
+    //     this.setState({
+    //         modalOpen: true,
+    //         renterName: name
+    //     });
+    // }
     deleteUser = async (username) => {
         const data = await axios.delete(`/admin/deleteUser/${username}`)
         this.setState({ data: data.data })
