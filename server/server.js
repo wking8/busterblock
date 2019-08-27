@@ -11,7 +11,7 @@ const ctrl = require('./controller')
 const app = express()
 
 // app.use(index);
-app.use( express.static( `${__dirname}/../build` ) );
+app.use( express.static( `${__dirname}/../build` ) );   
 app.use(express.json())
 // Session
 app.use(session({

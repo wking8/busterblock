@@ -58,9 +58,15 @@ export const updateSearchTerm = (searchTerm) => (dispatch) => {
 export default (state = initialState, action) => {
     const { type, payload } = action
     switch (type) {
+        case DELETE_MOVIE:
+            return {
+                imdbid: payload,
+                ...state
+            }
         case UPDATE_SEARCH_TERM:
             // TODO add check to make sure movieData is not null
-            const results = state.movieData.map(movie => movie.title.toLowerCase().includes(payload.toLowerCase()) ? movie : null);
+            const results = state.movieData.map(movie => movie.title.toLowerCase().includes(payload.toLowerCase()) ? movie : null ||
+                movie.actors.toLowerCase().includes(payload.toLowerCase()) ? movie : null);
             return {
                 ...state,
                 searchTerm: payload,

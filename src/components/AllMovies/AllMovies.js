@@ -27,6 +27,7 @@ class AllMovies extends Component {
                         imdbid={element.imdbid}
                         actors={element.actors}
                         deleteMovie={this.deleteMovie}
+                        key={element.id}
                     />
                 })
                 // returning the original array if nothing is searched
@@ -36,6 +37,7 @@ class AllMovies extends Component {
                         imdbid={element.imdbid}
                         actors={element.actors}
                         deleteMovie={this.deleteMovie}
+                        key={element.id}
                     />
                 })
         }
@@ -43,11 +45,11 @@ class AllMovies extends Component {
             <div className='all-movies'>
                 <div id='scroll'></div>
                 <Header />
-                <hr class='hr'></hr>
+                <hr className='hr'></hr>
                 <div className='movie-container'>
                     {mappedMovies}
                 </div>
-                <hr class='hr'></hr>
+                <hr className='hr'></hr>
                 <div>
                     <Footer />
                 </div>

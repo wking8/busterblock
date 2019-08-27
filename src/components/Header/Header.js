@@ -62,7 +62,7 @@ class Header extends Component {
                             className='logout'>
                             Logout
                         </Button>
-                        <div class="divider" />
+                        {/* <div className="divider" /> */}
                         <input
                             onChange={e => this.handleChange(e)}
                             name='search'

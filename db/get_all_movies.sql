@@ -1,1 +1,2 @@
-select * from movie_details;
+select * from movie_details
+order by random();
