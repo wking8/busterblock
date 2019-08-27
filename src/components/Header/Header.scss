@@ -165,3 +165,8 @@ li {
 		padding-bottom: 20px;
 	}
 }
+@media(max-width: 500px) {
+	.account input {
+		margin-left: 10px;
+	}
+}

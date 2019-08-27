@@ -16,7 +16,7 @@
 	flex-direction: column;
 	align-items: center;
 	flex-wrap: wrap;
-	width: 60vw;
+	width: 50vw;
 	background: white;
 	box-shadow: 5px 10px 10px #888888;
 	input {
@@ -45,11 +45,22 @@
 	height: auto;
 	display: inline-block;
 }
-
+@media(max-width: 1024px) {
+	.login-inputs {
+		height: 50vh;
+		width: 50vw;
+	}
+}
 @media(max-width: 750px) {
     .login-container {
         display: flex;
         justify-content: space-around;
         width: 49%;
     }
+}
+@media(max-width: 500px) {
+	.login-inputs {
+		height: 45vh;
+		width: 85vw;
+	}
 }
