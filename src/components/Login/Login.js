@@ -27,7 +27,7 @@ class Login extends Component {
                 this.props.history.push('/allmovies')
             })
             .catch(err => {
-                alert('Email already in use.')
+                alert('Email already in use. Please login or register a new account.')
             })
     }
     login = () => {
@@ -42,7 +42,7 @@ class Login extends Component {
                 this.props.history.push(`/allmovies`)
             })
             .catch(err => {
-                alert('Please try again.')
+                alert('No email associated. Please try again or register.')
             })
     }
     render() {
@@ -66,7 +66,7 @@ class Login extends Component {
                     <div className='password'>
                         <input
                             onChange={e => this.handleChange(e)}
-                            name='passwordInput' type="text"
+                            name='passwordInput' type="password"
                             placeholder='PASSWORD'
                         />
                     </div>

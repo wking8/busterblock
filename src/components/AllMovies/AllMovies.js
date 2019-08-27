@@ -26,6 +26,7 @@ class AllMovies extends Component {
                         poster={element.poster}
                         imdbid={element.imdbid}
                         actors={element.actors}
+                        yearReleased={element.year_released}
                         deleteMovie={this.deleteMovie}
                         key={element.id}
                     />
@@ -36,6 +37,7 @@ class AllMovies extends Component {
                         poster={element.poster}
                         imdbid={element.imdbid}
                         actors={element.actors}
+                        yearReleased={element.year_released}
                         deleteMovie={this.deleteMovie}
                         key={element.id}
                     />

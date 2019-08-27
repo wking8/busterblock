@@ -4,8 +4,6 @@ import './MovieCard.scss'
 import { connect } from 'react-redux'
 import { deleteMovie } from '../../ducks/reducer'
 
-
-
 class MovieCard extends Component {
     render() {
         return (    
