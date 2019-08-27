@@ -47,7 +47,7 @@ class Header extends Component {
                         to="scroll"
                         spy={true}
                         smooth={true}
-                        offset={-150}
+                        offset={-130}
                         duration={2000}
                     >
                         <h1 id='scroll' className='app-title'>BusterBlock</h1>

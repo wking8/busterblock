@@ -12,6 +12,7 @@ $color_5: #212121;
 	height: 120px;
 	padding-bottom: 20px;
 	padding: 20px;
+	cursor: pointer;
 }
 .divider {
 	width: 15px;
@@ -124,6 +125,7 @@ li {
 		width: 100vw;
 		height: 180px;
 		padding-bottom: 20px;
+		cursor: pointer;
 	}
 	.account {
 		width: 45%;
@@ -138,6 +140,7 @@ li {
 		width: 100vw;
 		height: 180px;
 		padding-bottom: 20px;
+		cursor: pointer;
 	}
 	.account {
 		width: 58%;
@@ -152,6 +155,7 @@ li {
 		width: 100vw;
 		height: 180px;
 		padding-bottom: 20px;
+		cursor: pointer;
 	}
 }
 @media (max-width: 773px) {
@@ -163,6 +167,7 @@ li {
 		width: 100vw;
 		height: 180px;
 		padding-bottom: 20px;
+		cursor: pointer;
 	}
 }
 @media(max-width: 500px) {
